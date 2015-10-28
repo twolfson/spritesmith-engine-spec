@@ -54,7 +54,7 @@ A spritesmith `engine` returns the following properties on its `module.exports`:
     - `cb` will have the function signature `(err, images)`
     - If there is an error, run `cb(err)`. Otherwise, callback with an array of image metadata (i.e. `cb(null, images)`)
     - This should be called asynchronously (e.g. if creation is synchronous, use `process.nextTick`)
-    - An `image` (i.e. an item from `images`) should have the following structure
+    - image `Object` - Metadata container about corresponding input image at same index
         - height `Number` - Height in pixels of corresponding input image at same index
         - width `Number` - Width in pixels of corresponding input image at same index
         - Any other metadata can be stored here and will be passed to `canvas.addImage` (e.g. `filepath`)
