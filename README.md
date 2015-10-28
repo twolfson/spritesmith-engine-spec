@@ -44,7 +44,7 @@ A spritesmith `engine` returns the following properties on its `module.exports`:
 - cb `Function` - Error-first callback function to return canvas via
     - `cb` will have the function signature `(err, canvas)`
     - If there is an error, run `cb(err)`. Otherwise, callback with a canvas (i.e. `cb(null, canvas)`)
-    - This should be called asynchronously (e.g. use `process.nextTick` for after synchronous creation)
+    - This should be called asynchronously (e.g. if creation is synchronous, use `process.nextTick`)
 
 ### `engine.createImages(images, cb)`
 `engine.createImages` should have the function signature `(images, cb)`
@@ -53,7 +53,7 @@ A spritesmith `engine` returns the following properties on its `module.exports`:
 - cb `Function` - Error-first callback function to return image metadata via
     - `cb` will have the function signature `(err, images)`
     - If there is an error, run `cb(err)`. Otherwise, callback with an array of image metadata (i.e. `cb(null, images)`)
-    - This should be called asynchronously (e.g. use `process.nextTick` for after synchronous creation)
+    - This should be called asynchronously (e.g. if creation is synchronous, use `process.nextTick`)
     - An `image` (i.e. an item from `images`) should have the following structure
         - height `Number` - Height in pixels of corresponding input image at same index
         - width `Number` - Width in pixels of corresponding input image at same index
@@ -84,7 +84,7 @@ A canvas for a spritesmith `engine` should be an object with the following struc
 - cb `Function` - Error-first callback function to return export image via
     - `cb` will have the function signature `(err, result)`
     - If there is an error, run `cb(err)`. Otherwise, callback with an array of image metadata (i.e. `cb(null, result)`)
-    - This should be called asynchronously (e.g. use `process.nextTick` for after synchronous creation)
+    - This should be called asynchronously (e.g. if creation is synchronous, use `process.nextTick`)
     - result `String` - Binary encoded string of output image (e.g. `Buffer.toString('binary')`)
         - This novice mistake was done from the inception of `spritesmith`. Thankfully it will be patched soon.
 
