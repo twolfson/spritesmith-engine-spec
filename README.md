@@ -39,8 +39,8 @@ A spritesmith `engine` returns the following properties on its `module.exports`:
 ### `engine.createCanvas(width, height, cb)`
 `engine.createCanvas` should have the function signature `(width, height, cb)`
 
-- width `Number` - Width in pixels for the canvas. Upon `export`, the output image should be this wide
-- height `Number` - Height in pixels for the canvas. Upon `export`, the output image should be this tall
+- width `Number` - Width in pixels for the canvas
+- height `Number` - Height in pixels for the canvas
 - cb `Function` - Error-first callback function to return canvas via
     - `cb` will have the function signature `(err, canvas)`
     - If there is an error, run `cb(err)`. Otherwise, callback with a canvas (i.e. `cb(null, canvas)`)
