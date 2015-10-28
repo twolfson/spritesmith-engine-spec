@@ -14,6 +14,11 @@ This documentation is for version:
 
 ## Documentation
 ### Terminology
+In `spritesmith`, the following terms and definitions will be used:
+
+- `engine` - A library that handles interactions between images
+- `image` - Object containing metadata about an image file or buffer
+- `canvas` - Class that handles placing images onto a visual layer and generating an output image
 
 ### Structure
 A spritesmith `engine` returns the following properties on its `module.exports`:
