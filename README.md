@@ -20,6 +20,15 @@ In `spritesmith`, the following terms and definitions will be used:
 - `image` - Object containing metadata about an image file or buffer
 - `canvas` - Class that handles placing images onto a visual layer and generating an output image
 
+### Process
+When `spritesmith` is generating a spritesheet, we will perform the following steps:
+
+1. Process images into metadata (e.g. get size of each image)
+2. Calculate layout based on user preferences (outside of `engine`)
+3. Create canvas to place images on
+4. Place each image on canvas
+5. Export canvas as an image
+
 ### engine structure
 A spritesmith `engine` returns the following properties on its `module.exports`:
 
@@ -49,6 +58,9 @@ A spritesmith `engine` returns the following properties on its `module.exports`:
         - height `Number` - Height in pixels of corresponding input image at same index
         - width `Number` - Width in pixels of corresponding input image at same index
         - Any other metadata can be stored here and will be passed to `canvas.addImage` (e.g. `filepath`)
+
+### canvas structure
+
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style.
