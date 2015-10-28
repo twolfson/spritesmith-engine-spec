@@ -68,8 +68,8 @@ A canvas for a spritesmith `engine` should be an object with the following struc
 ### `canvas.addImage(image, x, y)`
 `canvas.addImage` should have the function signature `(image, x, y)`
 
-- image `Object` - Image object create from `engine.createImages`
-    - This will be the **same** object as before so any additional metadata will be accessible (e.g. `filepath`)
+- image `Object` - Image object created via `engine.createImages`
+    - This will be the **same** object so any additional metadata will be accessible (e.g. `filepath`)
 - x `Number` - Horizontal coordinate to position left edge of image
 - y `Number` - Vertical coordinate to position top edge of image
 
