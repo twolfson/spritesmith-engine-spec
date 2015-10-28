@@ -32,7 +32,7 @@ When `spritesmith` is generating a spritesheet, we will perform the following st
 ### engine structure
 A spritesmith `engine` returns the following properties on its `module.exports`:
 
-- specVersion `String` - Current [semver][] the engine is supporting (e.g. '1.0.0')
+- specVersion `String` - Current specification version the engine is supporting (e.g. '1.0.0')
 - createCanvas `Function` - Utility to create `canvas` for `engine`
 - createImages `Function` - Utility to create images which will later be laid out via a `canvas`
 
