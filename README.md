@@ -86,7 +86,7 @@ A canvas for a spritesmith `engine` should be an object with the following struc
     - If there is an error, run `cb(err)`. Otherwise, callback with an array of image metadata (i.e. `cb(null, result)`)
     - This should be called asynchronously (e.g. if creation is synchronous, use `process.nextTick`)
     - result `String` - Binary encoded string of output image (e.g. `Buffer.toString('binary')`)
-        - This novice mistake was done from the inception of `spritesmith`. Thankfully it will be patched soon.
+        - This novice mistake was done at the inception of `spritesmith`. Thankfully it will be patched soon.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style.
