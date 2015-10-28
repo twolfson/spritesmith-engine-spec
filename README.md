@@ -1,23 +1,29 @@
 # spritesmith-engine-spec
 
-Specification for spritesmith engines
+Specification for [spritesmith][] engines
 
-## Getting Started
-Install the module with: `npm install spritesmith-engine-spec`
+In addition to this repo, we offer an integration test suite via [spritesmith-engine-test][].
 
-```js
-var spritesmithEngineSpec = require('spritesmith-engine-spec');
-spritesmithEngineSpec(); // 'awesome'
-```
+[spritesmith]: https://github.com/Ensighten/spritesmith
+[spritesmith-engine-test]: https://github.com/twolfson/spritesmith-engine-test
+
+## Version
+This documentation is for version:
+
+**1.0.0**
 
 ## Documentation
-_(Coming soon)_
+### Terminology
 
-## Examples
-_(Coming soon)_
+### Structure
+A spritesmith `engine` returns the following properties on its `module.exports`:
+
+- specVersion `String` - Current [semver][] the engine is supporting (e.g. '1.0.0')
+-
+
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via `npm run lint` and test via `npm test`.
+In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Donating
 Support this project and [others by twolfson][gratipay] via [gratipay][].
