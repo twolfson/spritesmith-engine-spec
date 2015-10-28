@@ -60,7 +60,33 @@ A spritesmith `engine` returns the following properties on its `module.exports`:
         - Any other metadata can be stored here and will be passed to `canvas.addImage` (e.g. `filepath`)
 
 ### canvas structure
+A canvas for a spritesmith `engine` should be an object with the following structure:
 
+- addImage `Function` - Method to add an image to canvas
+- export `Function` - Method to export canvas as an image
+
+### `canvas.addImage(image, x, y)`
+`canvas.addImage` should have the function signature `(image, x, y)`
+
+- image `Object` - Image object create from `engine.createImages`
+    - This will be the **same** object as before so any additional metadata will be accessible (e.g. `filepath`)
+- x `Number` - Horizontal coordinate to position left edge of image
+- y `Number` - Vertical coordinate to position top edge of image
+
+**Note:** This method is not asynchronous to force all asynchronous actions to take place during export. If there is an asynchronous action that needs to take place, then please store metadata on the `canvas` and use it during `export`.
+
+### `canvas.export(options, cb)`
+`canvas.export` should have the function signature `(options, cb)`
+
+- options `Object` - Modifiers to indicate how to export (e.g. `format`, `quality`)
+    - format `String` - Image format to export canvas as (e.g. `png`, `jpeg`)
+    - Any other options can be defined custom to your engine (e.g. `quality`)
+- cb `Function` - Error-first callback function to return export image via
+    - `cb` will have the function signature `(err, result)`
+    - If there is an error, run `cb(err)`. Otherwise, callback with an array of image metadata (i.e. `cb(null, result)`)
+    - This should be called asynchronously (e.g. use `process.nextTick` for after synchronous creation)
+    - result `String` - Binary encoded string of output image (e.g. `Buffer.toString('binary')`)
+        - This novice mistake was done from the inception of `spritesmith`. Thankfully it will be patched soon.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style.
