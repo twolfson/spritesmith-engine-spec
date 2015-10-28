@@ -25,15 +25,30 @@ A spritesmith `engine` returns the following properties on its `module.exports`:
 
 - specVersion `String` - Current [semver][] the engine is supporting (e.g. '1.0.0')
 - createCanvas `Function` - Utility to create `canvas` for `engine`
-    - `createCanvas` should have the function signature `(width, height, cb)`
-        - width `Number` - Width in pixels for the canvas. Upon `export`, the output image should have this `width`
-        - height `Number` - Height in pixels for the canvas. Upon `export`, the output image should have this `height`
-        - cb `Function` - Error-first callback function to return canvas via
-            - `cb` will have the function signature `(err, canvas)`
-            - If there is an error, run `cb(err)`. Otherwise, callback with a canvas (i.e. `cb(null, canvas)`)
-            - This should be called asynchronously (e.g. use `process.nextTick` for after synchronous creation)
 - createImages `Function` - Utility to create images which will later be laid out via a `canvas`
 
+### `engine.createCanvas(width, height, cb)`
+`engine.createCanvas` should have the function signature `(width, height, cb)`
+
+- width `Number` - Width in pixels for the canvas. Upon `export`, the output image should have this `width`
+- height `Number` - Height in pixels for the canvas. Upon `export`, the output image should have this `height`
+- cb `Function` - Error-first callback function to return canvas via
+    - `cb` will have the function signature `(err, canvas)`
+    - If there is an error, run `cb(err)`. Otherwise, callback with a canvas (i.e. `cb(null, canvas)`)
+    - This should be called asynchronously (e.g. use `process.nextTick` for after synchronous creation)
+
+### `engine.createImages(images, cb)`
+`engine.createImages` should have the function signature `(images, cb)`
+
+- images `String[]` - Array of filepaths to images
+- cb `Function` - Error-first callback function to return image metadata via
+    - `cb` will have the function signature `(err, images)`
+    - If there is an error, run `cb(err)`. Otherwise, callback with an array of image metadata (i.e. `cb(null, images)`)
+    - This should be called asynchronously (e.g. use `process.nextTick` for after synchronous creation)
+    - An `image` (i.e. an item from `images`) should have the following structure
+        - height `Number` - Height in pixels of corresponding input image at same index
+        - width `Number` - Width in pixels of corresponding input image at same index
+        - Any other metadata can be stored here and will be passed to `canvas.addImage` (e.g. `filepath`)
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style.
