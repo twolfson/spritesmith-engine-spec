@@ -44,6 +44,7 @@ A spritesmith `engine` returns the following properties on its `module.exports`:
 - cb `Function` - Error-first callback function to return canvas via
     - `cb` will have the function signature `(err, canvas)`
     - If there is an error, run `cb(err)`. Otherwise, callback with a canvas (i.e. `cb(null, canvas)`)
+    - Canvas structure is documented in the [canvas structure section](#canvas-structure)
     - This should be called asynchronously (e.g. if creation is synchronous, use `process.nextTick`)
 
 ### `engine.createImages(images, cb)`
