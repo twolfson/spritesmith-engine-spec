@@ -74,7 +74,7 @@ A canvas for a spritesmith `engine` should be an object with the following struc
 - x `Number` - Horizontal coordinate to position left edge of image
 - y `Number` - Vertical coordinate to position top edge of image
 
-**Note:** This method is not asynchronous to force all asynchronous actions to take place during export. If there is an asynchronous action that needs to take place, then please store metadata on the `canvas` and use it during `export`.
+**Note:** This method is not asynchronous intentionally. Please run all asynchronous actions during `export`. We suggest saving any critical metadata to `canvas` and reusing it during `export`.
 
 ### `canvas.export(options, cb)`
 `canvas.export` should have the function signature `(options, cb)`
