@@ -40,7 +40,7 @@ Constructor for a new engine
     - For example, `gmsmith` has `imageMagick: true` to force usage of ImageMagick over GraphicsMagick
 
 ### `Engine.specVersion`
-Current specification version the engine is supporting (e.g. '1.0.0')
+`String` representing current specification version the engine is supporting (e.g. '1.0.0')
 
 ### `engine.createCanvas(width, height)`
 Utility to create a new canvas based on the `engine`
