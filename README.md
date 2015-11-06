@@ -10,7 +10,7 @@ In addition to this repo, we offer an integration test suite via [spritesmith-en
 ## Version
 This documentation is for version:
 
-**1.0.0**
+**2.0.0**
 
 ## Documentation
 ### Terminology
@@ -29,25 +29,33 @@ When `spritesmith` is generating a spritesheet, we will perform the following st
 4. Place each image on canvas
 5. Export canvas as an image
 
-### engine structure
-A spritesmith `engine` returns the following properties on its `module.exports`:
+### Exports
+A spritesmith engine returns an `Engine` constructor function with as its `module.exports`
 
-- specVersion `String` - Current specification version the engine is supporting (e.g. '1.0.0')
-- createCanvas `Function` - Utility to create `canvas` for `engine`
-- createImages `Function` - Utility to create images which will later be laid out via a `canvas`
+### `new Engine(options)`
+Constructor for a new engine
 
-### `engine.createCanvas(width, height, cb)`
-`engine.createCanvas` should have the function signature `(width, height, cb)`
+- options `Object` - Container for flags to set for the engine\
+    - TODO: Implement/document the proper flags
+    - For example, `gmsmith` has `imageMagick: true` to force usage of ImageMagick over GraphicsMagick
+
+### `Engine.specVersion`
+Current specification version the engine is supporting (e.g. '1.0.0')
+
+### `engine.createCanvas(width, height)`
+Utility to create a new canvas based on the `engine`
 
 - width `Number` - Width in pixels for the canvas
 - height `Number` - Height in pixels for the canvas
-- cb `Function` - Error-first callback function to return canvas via
-    - `cb` will have the function signature `(err, canvas)`
-    - If there is an error, run `cb(err)`. Otherwise, callback with a canvas (i.e. `cb(null, canvas)`)
-    - This should be called asynchronously (e.g. if creation is synchronous, use `process.nextTick`)
-    - Canvas structure is documented in the [canvas structure section](#canvas-structure)
+
+**Returns:**
+
+- canvas `Canvas` - Instance of a canvas class for the `engine`
+
+**Note:** This method is intentionally synchronous. Please run all asynchronous actions during `canvas.export`. We suggest saving any critical metadata to `canvas` and reusing it during `canvas.export`.
 
 ### `engine.createImages(images, cb)`
+createImages `Function` - Utility to create images which will later be laid out via a `canvas`
 `engine.createImages` should have the function signature `(images, cb)`
 
 - images `String[]` - Array of filepaths to images
@@ -60,11 +68,10 @@ A spritesmith `engine` returns the following properties on its `module.exports`:
         - width `Number` - Width in pixels of corresponding input image at same index
         - Any other metadata can be stored here and will be passed to `canvas.addImage` (e.g. `filepath`)
 
-### canvas structure
-A canvas for a spritesmith `engine` should be an object with the following structure:
+### `new Canvas(width, height, engine)`
+Placeholder documentation to suggest how to write a `canvas`. It's possible to avoid using a `constructor` but it will lead to more trouble than not.
 
-- addImage `Function` - Method to add an image to canvas
-- export `Function` - Method to export canvas as an image
+The following methods are required as part of the returned `Canvas` object
 
 ### `canvas.addImage(image, x, y)`
 `canvas.addImage` should have the function signature `(image, x, y)`
@@ -74,7 +81,7 @@ A canvas for a spritesmith `engine` should be an object with the following struc
 - x `Number` - Horizontal coordinate to position left edge of image
 - y `Number` - Vertical coordinate to position top edge of image
 
-**Note:** This method is not asynchronous intentionally. Please run all asynchronous actions during `export`. We suggest saving any critical metadata to `canvas` and reusing it during `export`.
+**Note:** This method is intentionally synchronous. Please run all asynchronous actions during `canvas.export`. We suggest saving any critical metadata to `canvas` and reusing it during `canvas.export`.
 
 ### `canvas.export(options, cb)`
 `canvas.export` should have the function signature `(options, cb)`
