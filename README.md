@@ -87,7 +87,8 @@ The following methods are required as part of the returned `Canvas` object
 `canvas.export` should have the function signature `(options, cb)`
 
 - options `Object` - Modifiers to indicate how to export (e.g. `format`, `quality`)
-    - format `String` - Image format to export canvas as (e.g. `png`, `jpeg`)
+    - format `String` - Image format to export canvas as
+        - Commonly used formats are: `png`, `jpeg`, and `gif`
     - Any other options can be defined custom to your engine (e.g. `quality`)
 - cb `Function` - Error-first callback function to return export image via
     - `cb` will have the function signature `(err, result)`
