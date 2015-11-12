@@ -72,7 +72,7 @@ Placeholder documentation to suggest how to write a `canvas`. It's possible to a
 The following methods are required as part of the returned `Canvas` object
 
 ### `canvas.addImage(image, x, y)`
-`canvas.addImage` should have the function signature `(image, x, y)`
+`Function` to add an image onto our canvas. This should have the function signature `(image, x, y)`
 
 - image `Object` - Image object created via `engine.createImages`
     - This will be the **same** object so any additional metadata will be accessible (e.g. `filepath`)
@@ -82,7 +82,7 @@ The following methods are required as part of the returned `Canvas` object
 **Note:** This method is intentionally synchronous. Please run all asynchronous actions during `canvas.export`. We suggest saving any critical metadata to `canvas` and reusing it during `canvas.export`.
 
 ### `canvas.export(options, cb)`
-`canvas.export` should have the function signature `(options, cb)`
+`Function` to export canvas as an image. This should have the function signature `(options, cb)`
 
 - options `Object` - Modifiers to indicate how to export (e.g. `format`, `quality`)
     - format `String` - Image format to export canvas as
