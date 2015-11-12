@@ -43,7 +43,7 @@ Constructor for a new engine
 `String` representing current specification version the engine is supporting (e.g. '1.0.0')
 
 ### `engine.createCanvas(width, height)`
-Utility to create a new canvas based on the `engine`
+`Function` to create a new canvas based on the `engine`. This should have the function signature `(width, height, cb)`
 
 - width `Number` - Width in pixels for the canvas
 - height `Number` - Height in pixels for the canvas
@@ -55,8 +55,7 @@ Utility to create a new canvas based on the `engine`
 **Note:** This method is intentionally synchronous. Please run all asynchronous actions during `canvas.export`. We suggest saving any critical metadata to `canvas` and reusing it during `canvas.export`.
 
 ### `engine.createImages(images, cb)`
-createImages `Function` - Utility to create images which will later be laid out via a `canvas`
-`engine.createImages` should have the function signature `(images, cb)`
+`Function` to create images which will later be laid out via a `canvas`. This should have the function signature `(images, cb)`
 
 - images `String[]` - Array of filepaths to images
 - cb `Function` - Error-first callback function to return image metadata via
@@ -96,6 +95,11 @@ The following methods are required as part of the returned `Canvas` object
     - This should be called asynchronously (e.g. if creation is synchronous, use `process.nextTick`)
     - result `String` - Binary encoded string of output image (e.g. `Buffer.toString('binary')`)
         - This novice mistake was done at the inception of `spritesmith`. Thankfully it will be patched soon.
+
+## Discovery
+In order to make our engines easily discoverable, please provide a `spritesmith-engine` keyword. Here's a list of existing spritesmith engines:
+
+https://www.npmjs.com/browse/keyword/spritesmith-engine
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style.
