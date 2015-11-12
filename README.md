@@ -35,9 +35,8 @@ A spritesmith engine returns an `Engine` constructor function with as its `modul
 ### `new Engine(options)`
 Constructor for a new engine
 
-- options `Object` - Container for flags to set for the engine\
-    - TODO: Implement/document the proper flags
-    - For example, `gmsmith` has `imageMagick: true` to force usage of ImageMagick over GraphicsMagick
+- options `Object` - Container for flags to set for the engine
+    - For example, `gmsmith` has `imagemagick: true` to force usage of ImageMagick over GraphicsMagick
 
 ### `Engine.specVersion`
 `String` representing current specification version the engine is supporting (e.g. '1.0.0')
