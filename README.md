@@ -88,6 +88,11 @@ A canvas for a spritesmith `engine` should be an object with the following struc
     - result `String` - Binary encoded string of output image (e.g. `Buffer.toString('binary')`)
         - This novice mistake was done at the inception of `spritesmith`. Thankfully it will be patched soon.
 
+## Discovery
+In order to make our engines easily discoverable, please provide a `spritesmith-engine` keyword. Here's a list of existing spritesmith engines:
+
+https://www.npmjs.com/browse/keyword/spritesmith-engine
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style.
 
