@@ -10,7 +10,7 @@ In addition to this repo, we offer an integration test suite via [spritesmith-en
 ## Version
 This documentation is for version:
 
-**1.0.0**
+**1.1.0**
 
 ## Documentation
 ### Terminology
@@ -30,14 +30,13 @@ When `spritesmith` is generating a spritesheet, we will perform the following st
 5. Export canvas as an image
 
 ### engine structure
-A spritesmith `engine` returns the following properties on its `module.exports`:
+A spritesmith `engine` returns the following properties on its `module.exports`
 
-- specVersion `String` - Current specification version the engine is supporting (e.g. '1.0.0')
-- createCanvas `Function` - Utility to create `canvas` for `engine`
-- createImages `Function` - Utility to create images which will later be laid out via a `canvas`
+### `engine.specVersion`
+`String` of current specification version the engine is supporting (e.g. '1.0.0')
 
 ### `engine.createCanvas(width, height, cb)`
-`engine.createCanvas` should have the function signature `(width, height, cb)`
+`Function` to creates a `canvas` for `engine`. This should have the function signature `(width, height, cb)`
 
 - width `Number` - Width in pixels for the canvas
 - height `Number` - Height in pixels for the canvas
@@ -48,7 +47,7 @@ A spritesmith `engine` returns the following properties on its `module.exports`:
     - Canvas structure is documented in the [canvas structure section](#canvas-structure)
 
 ### `engine.createImages(images, cb)`
-`engine.createImages` should have the function signature `(images, cb)`
+`Function` to create images which will later be laid out via a `canvas`. This should have the function signature `(images, cb)`
 
 - images `String[]` - Array of filepaths to images
 - cb `Function` - Error-first callback function to return image metadata via
