@@ -81,7 +81,7 @@ The following methods are required as part of the returned `Canvas` object
 
 **Note:** This method is intentionally synchronous. Please run all asynchronous actions during `canvas.export`. We suggest saving any critical metadata to `canvas` and reusing it during `canvas.export`.
 
-### `canvas.export(options, cb)`
+### `canvas.export(options)`
 `Function` to export canvas as an image. This should have the function signature `(options, cb)`
 
 - options `Object` - Modifiers to indicate how to export (e.g. `format`, `quality`)
@@ -89,12 +89,10 @@ The following methods are required as part of the returned `Canvas` object
         - Most engines should default to `png`
         - Commonly used formats are: `png`, `jpeg`, and `gif`
     - Any other options can be defined custom to your engine (e.g. `quality`)
-- cb `Function` - Error-first callback function to return export image via
-    - `cb` will have the function signature `(err, result)`
-    - If there is an error, run `cb(err)`. Otherwise, callback with an array of image metadata (i.e. `cb(null, result)`)
-    - This should be called asynchronously (e.g. if creation is synchronous, use `process.nextTick`)
-    - result `String` - Binary encoded string of output image (e.g. `Buffer.toString('binary')`)
-        - This novice mistake was done at the inception of `spritesmith`. Thankfully it will be patched soon.
+
+**Returns:**
+
+- resultStream `Object` - Readable stream with exported image being written out via `Buffers` on `data` events
 
 ## Discovery
 In order to make our engines easily discoverable, please provide a `spritesmith-engine` keyword. Here's a list of existing spritesmith engines:
