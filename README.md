@@ -2,10 +2,13 @@
 
 Specification for [spritesmith][] engines
 
-In addition to this repo, we offer an integration test suite via [spritesmith-engine-test][].
+In addition to this repo, we offer an integration test suite via [spritesmith-engine-test][] and utilities for engines via [spritesmith-engine-util][].
+
+// TODO: Verify `-util` is the proper repo name
 
 [spritesmith]: https://github.com/Ensighten/spritesmith
 [spritesmith-engine-test]: https://github.com/twolfson/spritesmith-engine-test
+[spritesmith-engine-util]: https://github.com/twolfson/spritesmith-engine-util
 
 ## Version
 This documentation is for version:
@@ -56,7 +59,11 @@ Constructor for a new engine
 ### `engine.createImages(images, cb)`
 `Function` to create images which will later be laid out via a `canvas`. This should have the function signature `(images, cb)`
 
-- images `String[]` - Array of filepaths to images
+- images `String[]|Object[]` - Array of filepaths to images or vinyl representations themselves
+    - If an `image` is a `String`, then its the filepath to the image
+    - If an `image` is an `Object`, then its a [Vinyl][] object describing the image (e.g. filepath, contents)
+        - `image` may have a `Buffer`, `Stream`, or `null` contents. Please handle each of these cases appropriately (e.g. warn users when contents isn't used)
+        - TODO: Link to `-util` repo
 - cb `Function` - Error-first callback function to return image metadata via
     - `cb` will have the function signature `(err, images)`
     - If there is an error, run `cb(err)`. Otherwise, callback with an array of image metadata (i.e. `cb(null, images)`)
@@ -65,6 +72,8 @@ Constructor for a new engine
         - height `Number` - Height in pixels of corresponding input image at same index
         - width `Number` - Width in pixels of corresponding input image at same index
         - Any other metadata can be stored here and will be passed to `canvas.addImage` (e.g. `filepath`)
+
+[Vinyl]: https://github.com/gulpjs/vinyl
 
 ### `new Canvas(width, height, engine)`
 Placeholder documentation to suggest how to write a `canvas`. It's possible to avoid using a `constructor` but it will lead to more trouble than not.
