@@ -2,13 +2,10 @@
 
 Specification for [spritesmith][] engines
 
-In addition to this repo, we offer an integration test suite via [spritesmith-engine-test][] and utilities for engines via [spritesmith-engine-util][].
-
-// TODO: Verify `-util` is the proper repo name
+In addition to this repo, we offer an integration test suite via [spritesmith-engine-test][].
 
 [spritesmith]: https://github.com/Ensighten/spritesmith
 [spritesmith-engine-test]: https://github.com/twolfson/spritesmith-engine-test
-[spritesmith-engine-util]: https://github.com/twolfson/spritesmith-engine-util
 
 ## Version
 This documentation is for version:
@@ -63,7 +60,6 @@ Constructor for a new engine
     - If an `image` is a `String`, then its the filepath to the image
     - If an `image` is an `Object`, then its a [Vinyl][] object describing the image (e.g. filepath, contents)
         - `image` may have a `Buffer`, `Stream`, or `null` contents. Please handle each of these cases appropriately (e.g. warn users when contents isn't used)
-        - TODO: Link to `-util` repo
 - cb `Function` - Error-first callback function to return image metadata via
     - `cb` will have the function signature `(err, images)`
     - If there is an error, run `cb(err)`. Otherwise, callback with an array of image metadata (i.e. `cb(null, images)`)
