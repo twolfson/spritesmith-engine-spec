@@ -97,7 +97,7 @@ The following methods are required as part of the returned `Canvas` object
 
 **Returns:**
 
-- resultStream `Object` - Readable stream with exported image being written out via `Buffers` on `data` events
+- resultStream `Object` - Readable stream with exported image being written out via `Buffer` on `data` events
 
 ## Discovery
 In order to make our engines easily discoverable, please provide a `spritesmith-engine` keyword. Here's a list of existing spritesmith engines:
